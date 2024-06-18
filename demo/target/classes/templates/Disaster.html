@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disaster Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .disaster {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 2px solid #007bff;
+            border-radius: 10px;
+        }
+        .disaster h2 {
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+        .precautions {
+            color: #000000;
+            margin-top: 20px;
+        }
+        .description {
+            color: #333333;
+        }
+        .box-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        ul{
+            list-style-type: none;
+            padding: 20px;
+            margin:20px;
+        }
+        li{
+            display: inline;
+        }
+        h4{
+            display: inline;
+        }
+        ul.navbar {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            background-color: #333;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+        li.nav-item {
+            float: left;
+        }
+        li.nav-item a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        li.nav-item a:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <ul class="navbar">
+        <li class="nav-item"><a th:href="@{/api/chat}">Chat Page</a></li>
+        <li class="nav-item"><a th:href="@{/api/findAll}">Home Page</a></li>
+        <li class="nav-item"><a th:href="@{/api/info}">Info Page</a></li>
+        <li class="nav-item"><a th:href="@{/api/login}">Login Page</a></li>
+        <li class="nav-item"><a  th:href="@{/api/signup}">SignUp Page</a></li>
+        <li class="nav-item"><a  th:href="@{/api/map}">Map Page</a></li>
+        <li class="nav-item"><a  th:href="@{/api/disaster}">Disaster Page</a></li>
+    </ul>
+
+    <h1>Disaster Information and Precautions</h1>
+
+    <div class="disaster">
+        <h2>Earthquake</h2>
+        <p class="description"><span class="box-title">Description:</span> An earthquake is the shaking of the surface of the Earth resulting from a sudden release of energy in the Earth's lithosphere that creates seismic waves. Earthquakes can range in size from those that are so weak that they cannot be felt to those violent enough to propel objects and people into the air.</p>
+        <p class="precautions"><span class="box-title">Precautions:</span> During an earthquake, it is important to drop to the ground, take cover under sturdy furniture, and hold on until the shaking stops. After the earthquake, be cautious of aftershocks and check for injuries and damage.</p>
+    </div>
+
+    <div class="disaster">
+        <h2>Flood</h2>
+        <p class="description"><span class="box-title">Description:</span> A flood is an overflow of water that submerges land that is usually dry. Flooding may occur as an overflow of water from water bodies, such as a river, lake, or ocean, in which the water overtops or breaks levees, resulting in some of that water escaping its usual boundaries.</p>
+        <p class="precautions"><span class="box-title">Precautions:</span> Before a flood, it is important to have an emergency kit ready and to be familiar with evacuation routes. During a flood, move to higher ground and avoid walking or driving through floodwaters. After the flood, listen for updates from authorities and avoid returning to affected areas until it is safe to do so.</p>
+    </div>
+
+    <div class="disaster">
+        <h2>Wildfire</h2>
+        <p class="description"><span class="box-title">Description:</span> A wildfire, also known as a forest fire, bushfire, or vegetation fire, is an uncontrolled fire that spreads rapidly through vegetation. Wildfires can occur in forests, grasslands, or other areas with combustible vegetation, often fueled by dry conditions and wind.</p>
+        <p class="precautions"><span class="box-title">Precautions:</span> Before a wildfire, create a defensible space around your home by removing brush and other flammable materials. During a wildfire, stay informed about evacuation orders and be ready to leave immediately if necessary. After the wildfire, be cautious of hazards such as hot spots and unstable terrain.</p>
+    </div>
+
+    <div class="disaster">
+        <h2>Tornado</h2>
+        <p class="description"><span class="box-title">Description:</span> A tornado is a rapidly rotating column of air that is in contact with both the surface of the Earth and a cumulonimbus cloud or, in rare cases, the base of a cumulus cloud. Tornadoes can cause extreme destruction with winds exceeding 300 miles per hour.</p>
+        <p class="precautions"><span class="box-title">Precautions:</span> When a tornado warning is issued, seek shelter in a sturdy building, preferably in a basement or interior room on the lowest floor. Avoid windows and protect yourself from flying debris with heavy blankets or mattresses. After the tornado passes, be cautious of hazards such as downed power lines and damaged buildings.</p>
+    </div>
+
+    <div class="disaster">
+        <h2>Hurricane</h2>
+        <p class="description"><span class="box-title">Description:</span> A hurricane is a tropical cyclone that forms over warm ocean waters and has sustained winds of 74 miles per hour or higher. Hurricanes can cause widespread destruction with heavy rainfall, storm surges, and high winds.</p>
+        <p class="precautions"><span class="box-title">Precautions:</span> Before a hurricane, secure outdoor objects and board up windows to protect against wind and debris. During a hurricane, stay indoors and away from windows, and listen for updates from authorities. After the hurricane, be cautious of flooding, downed power lines, and other hazards.</p>
+    </div>
+
+</div>
+</body>
+</html>

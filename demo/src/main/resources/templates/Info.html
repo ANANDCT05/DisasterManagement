@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disaster Statistics</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .navbar {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            background-color: #333;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .navbar li {
+            float: left;
+        }
+
+        .navbar li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .navbar li a:hover {
+            background-color: #555;
+        }
+
+        .filters {
+            margin-bottom: 20px;
+        }
+
+        .filters label {
+            font-weight: bold;
+        }
+
+        .filters select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .statistics {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+        }
+
+        .statistics-item {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f2f2f2;
+            border-radius: 5px;
+        }
+
+        .statistics-item:hover {
+            background-color: #e0e0e0;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <ul class="navbar">
+        <ul class="navbar">
+            <li class="nav-item"><a th:href="@{/api/chat}">Chat Page</a></li>
+            <li class="nav-item"><a th:href="@{/api/findAll}">Home Page</a></li>
+            <li class="nav-item"><a th:href="@{/api/info}">Info Page</a></li>
+            <li class="nav-item"><a th:href="@{/api/login}">Login Page</a></li>
+            <li class="nav-item"><a  th:href="@{/api/signup}">SignUp Page</a></li>
+            <li class="nav-item"><a  th:href="@{/api/map}">Map Page</a></li>
+            <li class="nav-item"><a  th:href="@{/api/disaster}">Disaster Page</a></li>
+        </ul>
+    </ul>
+    <h1>Disaster Statistics</h1>
+    <div class="filters">
+        <label for="filter">Filter by:</label>
+        <select id="filter">
+            <option value="all">All</option>
+            <option value="earthquake">Earthquake</option>
+            <option value="flood">Flood</option>
+            <option value="wildfire">Wildfire</option>
+            <option value="tornado">Tornado</option>
+            <option value="hurricane">Hurricane</option>
+        </select>
+    </div>
+    <div class="statistics" id="statistics"></div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const filterSelect = document.getElementById("filter");
+        const statisticsDiv = document.getElementById("statistics");
+
+        const statisticsData = [
+            { type: "earthquake", location: "California", deaths: 100, affected: 1000 },
+            { type: "flood", location: "Texas", deaths: 50, affected: 500 },
+            { type: "wildfire", location: "Australia", deaths: 200, affected: 2000 },
+            { type: "tornado", location: "Kansas", deaths: 20, affected: 200 },
+            { type: "hurricane", location: "Florida", deaths: 150, affected: 1500 }
+        ];
+
+        renderStatistics(statisticsData);
+
+        filterSelect.addEventListener("change", function () {
+            const selectedType = filterSelect.value;
+            if (selectedType === "all") {
+                renderStatistics(statisticsData);
+            } else {
+                const filteredData = statisticsData.filter(item => item.type === selectedType);
+                renderStatistics(filteredData);
+            }
+        });
+
+        function renderStatistics(data) {
+            statisticsDiv.innerHTML = "";
+            data.forEach(item => {
+                const itemDiv = document.createElement("div");
+                itemDiv.classList.add("statistics-item");
+                itemDiv.innerHTML = `
+                    <p><strong>Type:</strong> ${capitalizeFirstLetter(item.type)}</p>
+                    <p><strong>Location:</strong> ${item.location}</p>
+                    <p><strong>Deaths:</strong> ${item.deaths}</p>
+                    <p><strong>Affected:</strong> ${item.affected}</p>
+                `;
+                statisticsDiv.appendChild(itemDiv);
+            });
+        }
+
+        function capitalizeFirstLetter(string) {
+            return string.charAt(0).toUpperCase() + string.slice(1);
+        }
+    });
+</script>
+</body>
+</html>
